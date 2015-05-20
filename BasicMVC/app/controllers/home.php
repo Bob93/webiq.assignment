@@ -9,6 +9,10 @@ class Home extends Controller {
 		$this->view('home/index', ['name' => $user->name]);
 	} // einde function index();
 	
+	public function create($username = '', $email = '') {
+		
+	}
+	
 } // einde class Home
 
 ?>

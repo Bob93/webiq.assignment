@@ -9,9 +9,9 @@ $capsule->addConnection([
 	'host' => '127.0.0.1',
 	'username' => 'root',
 	'password' => 'root',
-	'database' => 'MVCContacts',
-	'charset' => 'utf8',
-	'collation' => 'utf8_unicode_ci',
+	'database' => 'mvccontacts',
+	'charset' => 'latin1',
+	'collation' => 'latin1_swedish_ci',
 	'prefix' => ''
 ]);
 

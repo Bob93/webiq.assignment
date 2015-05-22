@@ -1,20 +1,23 @@
 <?php
 
-use Illuminate\Database\Capsule\Manager as Capsule;
-
-$capsule = new Capsule();
-
-$capsule->addConnection([
-	'driver' => 'mysql',
-	'host' => '127.0.0.1',
-	'username' => 'root',
-	'password' => 'root',
-	'database' => 'mvccontacts',
-	'charset' => 'latin1',
-	'collation' => 'latin1_swedish_ci',
-	'prefix' => ''
-]);
-
-$capsule->bootEloquent();
+class DB {
+	
+	private static $db;
+	
+	public static function init() {
+		if(!self::$db) {
+			try {
+				$dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=UTF-8;';
+				self::$db = new PDO($dsn, DB_USER, DB_PASS);
+                self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                self::$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+			} catch (PDOException $e) {
+				echo 'Error: ' . $e->getMessage();
+			}
+		}
+		return self::$db;
+	}
+	
+}
 
 ?>
